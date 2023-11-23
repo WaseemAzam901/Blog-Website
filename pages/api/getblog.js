@@ -14,8 +14,8 @@ export default function handler(req, res) {
 
     // Send the file contents as the response
     res.status(200).json(JSON.parse(data));
-    console.log(data);
-    console.log("Salma");
-    console.log(req.query.salma);
+    // console.log(data);
+    // console.log("Salma");
+    // console.log(req.query.salma);
   });
 }
