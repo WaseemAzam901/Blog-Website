@@ -4,11 +4,15 @@ import React, { useEffect, useState } from 'react'
 
 
 const Slug = (props) => {
+  function createMarkup(c) {
+    return {__html: c};
+  }
   //sab say last walay function say value prop ki form main aati hai aur ussay hum use kar rahay hain state ki initiial value set karnay k liye
   const [blog, setblog] = useState(props.dataj);
-  //  yeh router bus farigh hai bus is say hum value nikal k slug ko de rahay hain jo hamaray itnay kaam ka nahi hai bus samjho practice k liye issay delete nahi kiya  main bus issay is liye delete nahi kar raha takay ap ko yeh method bhi aye k router say value kesay nikaltay hain 
+  //  yeh router bus farigh hai bus is say hum value nikal k slug ko de rahay hain jo hamaray itnay kaam ka nahi hai bus samjho practice k liye issay delete nahi kiya  main bus issay is liye delete nahi kar raha takay ap ko yeh method bhi aye k router say value kesay nikaltay hain warna ap nichay comment wala consolelog dekho us ko print kar k bhi hum yeh kaam lay saktay hain
     const router = useRouter();
     const {slug} = router.query;
+    // console.log(blog.slug)
   return (
     <>
     
@@ -16,7 +20,9 @@ const Slug = (props) => {
     <h1 className="text-4xl">Hello {slug}</h1>
     <hr />
     {/* yahn hum ny blog && blog.content is liye likha k agar in case state ko koi value nahi detay intial for example const [blog, setblog] = useState(); to error na aye is say hoga yeh k agar state khali hai toh yeh line nahi chalay gi kyu k hum ny kaha hai content tabhi access karo jab us main kuch ho*/}
-    <div className="text-lg px-20 py-10">{blog && blog.content}</div>
+    {/* ap neechay wali line ki jagah yeh bhi likh saktay thay agar ap fuction use nahi karna chahateay createMarkup wala {blog && <div className="text-lg px-20 py-10" dangerouslySetInnerHTML={{__html: blog.content}}></div>} aur {__html: blog.content} opject hai is liye hum ny issay {} main likha */}
+    {/* yahn say hum upper function ko blog content ki value pass kar rahay hain aur wo dangerously set html ko use kartay huway us main say html tag hata k text aur images dikha raha hai warna ap ko images nahi dikhti bus images k tag dikhtay */}
+    {blog && <div className="text-lg px-20 py-10" dangerouslySetInnerHTML={createMarkup(blog.content)}></div>}
     </div>
     </>
     

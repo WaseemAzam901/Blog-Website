@@ -32,7 +32,7 @@ const Blog = (props) => {
           <div className="blogItem flex flex-col justify-center items-center">
           <Link href={`/blogpost/${blogitem.slug}`}>
           <h3 className="font-bold text-2xl mt-4">{blogitem.title}</h3></Link>
-          <p className='w-[45vw]'>{blogitem.content.substr(0,140)}</p>
+          <p className='w-[45vw]'>{blogitem.metadesc.substr(0,140)}</p>
           </div>
         </div>
       })}
